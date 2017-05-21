@@ -16,8 +16,8 @@ for file in os.listdir(RESULT_DIR):
         files[frameworkName].append(file)
 
 # Ensure the Internet type is in the same order in all dictionary positions
-n_groups = 0
-X_labels = []
+n_groups = 0                #How many groups on chart
+X_labels = []               # X labels -> Internet types
 for key, values in files.items():
     files[key].sort(reverse=True)
     if n_groups == 0:
@@ -27,7 +27,6 @@ for key, values in files.items():
 
 # Data to plot
 X_data = dict()
-i = -1
 for key, values in files.items():
     print(key)
     X_data[key] = list()
@@ -56,11 +55,12 @@ for i, val in enumerate(X_data):
 
 plt.xlabel('Framework and Internet connection')
 plt.ylabel('Speed Index')
-plt.title('Scores by person')
+plt.title('Scores by framework')
 plt.xticks(index + bar_width, X_labels) #Kolejnosc musi byc ta sama przy tworzeniu wykresu!
 plt.legend()
 
 plt.tight_layout()
+#plt.savefig('foo.png')
 plt.show()
 
 
